@@ -4,7 +4,7 @@ output "lex_bots_id" {
 }
 output "lex_bots_abort_statement" {
   description = "Map of abort_statement values across all lex_bots, keyed the same as var.lex_bots"
-  value       = { for k, v in aws_lex_bot.lex_bots : k => v.abort_statement if v.abort_statement != null && length(v.abort_statement) > 0 }
+  value       = { for k, v in aws_lex_bot.lex_bots : k => one(v.abort_statement) if v.abort_statement != null && length(v.abort_statement) > 0 }
 }
 output "lex_bots_arn" {
   description = "Map of arn values across all lex_bots, keyed the same as var.lex_bots"
@@ -20,7 +20,7 @@ output "lex_bots_child_directed" {
 }
 output "lex_bots_clarification_prompt" {
   description = "Map of clarification_prompt values across all lex_bots, keyed the same as var.lex_bots"
-  value       = { for k, v in aws_lex_bot.lex_bots : k => v.clarification_prompt if v.clarification_prompt != null && length(v.clarification_prompt) > 0 }
+  value       = { for k, v in aws_lex_bot.lex_bots : k => one(v.clarification_prompt) if v.clarification_prompt != null && length(v.clarification_prompt) > 0 }
 }
 output "lex_bots_create_version" {
   description = "Map of create_version values across all lex_bots, keyed the same as var.lex_bots"
